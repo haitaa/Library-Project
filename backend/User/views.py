@@ -15,3 +15,31 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
         serializer.save()
 
 user_list_create_view = UserListCreateAPIView.as_view()
+
+
+class UserDetailAPIView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "id"
+
+user_detail_view = UserDetailAPIView.as_view()
+
+class UserUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "id"
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+
+user_update_view = UserUpdateAPIView.as_view()
+
+class UserDestroyAPIView(generics.RetrieveDestroyAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    lookup_field = "id"
+
+    def perfrom_destroy(self, instance):
+        super().perform_destroy(instance)
+
+user_delete_view = UserDestroyAPIView.as_view()

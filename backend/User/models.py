@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-
 class User(models.Model):
     class Genders(models.TextChoices):
         MALE = "male", _('Male'),
@@ -9,7 +8,7 @@ class User(models.Model):
         OTHER = "other", _("Other"),
         NOT_PROVIDED = "Not Provided", _("Not Provided")
 
-    tcNo = models.CharField(max_length=11, primary_key=True, unique=True)
+    tcNo = models.CharField(max_length=11, unique=True)
     name = models.CharField(max_length=30)
     surname = models.CharField(max_length=30)
     age = models.CharField(max_length=3)

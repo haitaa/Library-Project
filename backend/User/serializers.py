@@ -9,4 +9,4 @@ class UserSerializer(serializers.ModelSerializer):
     tcNo = serializers.CharField(validators=[unique_user_tcNo])
     class Meta:
         model = User
-        fields = ["tcNo", "name", "surname", "age", "gender", "created_at"]
+        fields = ["id", "tcNo", "name", "surname", "age", "gender", "created_at"]
