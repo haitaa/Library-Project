@@ -39,9 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-
-    'User',
+    'user',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,10 +79,14 @@ WSGI_APPLICATION = 'wesbitehome.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        "NAME": "kutuphane_app",
+        "USER": "postgres",
+        "PASSWORD": "rootpassword",
     }
 }
+
+AUTH_USER_MODEL = "user.User"
 
 
 # Password validation
