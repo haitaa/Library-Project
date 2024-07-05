@@ -9,8 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     username = serializers.CharField(validators=[unique_user_username])
     email = serializers.CharField(validators=[unique_user_email])
     password = serializers.CharField(read_only=True)
-    roles = serializers.CharField(read_only=True)
     gender = serializers.CharField(read_only=True)
     class Meta:
         model = User
-        fields = ["tcNo", "email", "password", "username", "first_name", "last_name", "age", "gender", "roles"]
+        fields = ["tcNo", "email", "password", "username", "first_name", "last_name", "age", "gender"]

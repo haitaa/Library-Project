@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'user',
+    'book',
 ]
 
 
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'wesbitehome.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        "NAME": "kutuphane_app",
+        "NAME": "library_app",
         "USER": "postgres",
         "PASSWORD": "rootpassword",
     }

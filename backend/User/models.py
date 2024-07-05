@@ -42,10 +42,6 @@ class User(AbstractBaseUser):
         FEMALE = "female", _("Female"),
         OTHER = "other", _("Other"),
         NOT_PROVIDED = "Not Provided", _("Not Provided")
-    
-    class Roles(models.TextChoices):
-        USER = "user", _("User")
-        AUTHOR = "author", _("Author")
 
     tcNo = models.CharField(max_length=11, unique=True)
     first_name = models.CharField(max_length=30)
@@ -53,7 +49,6 @@ class User(AbstractBaseUser):
     username= models.CharField(max_length=30, unique=True)
     email = models.EmailField(max_length=100, unique=True)
     age = models.CharField(max_length=3)
-    roles = models.TextField(max_length=30, choices=Roles.choices, default=Roles.USER)
     gender = models.TextField(
         max_length=15, 
         choices=Genders.choices, 
