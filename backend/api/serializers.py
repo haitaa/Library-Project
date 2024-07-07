@@ -1,15 +1,15 @@
 from rest_framework import serializers
+from user.models import User
+from author.models import Author
 
+class UserPublicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'email']
 
-class UserPublicSerializer(serializers.Serializer):
-    username = serializers.CharField(read_only=True)
-    id = serializers.IntegerField(read_only=True)
-    first_name = serializers.CharField(read_only=True)
-    last_name = serializers.CharField(read_only=True)
-    email = serializers.CharField(read_only=True)
+class AuthorPublicSerializer(serializers.ModelSerializer):
+    user = UserPublicSerializer(read_only=True)
 
-class BookPublicSerializer(serializers.Serializer):
-    title = serializers.CharField(read_only=True)
-    content = serializers.CharField(read_only=True)
-    pages = serializers.CharField(read_only=True)
-    price = serializers.IntegerField(read_only=True)
+    class Meta:
+        model = Author
+        fields = ['user']

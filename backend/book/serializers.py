@@ -1,9 +1,11 @@
 from rest_framework import serializers
 
 from .models import Book
+from api.serializers import AuthorPublicSerializer
+
 
 class BookSerializer(serializers.ModelSerializer):
-    author = serializers.CharField(source="author.username", read_only=True)
+    author = AuthorPublicSerializer(read_only=True)
     class Meta:
         model = Book
         fields = [
