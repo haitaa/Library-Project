@@ -54,6 +54,7 @@ class User(AbstractBaseUser):
         choices=Genders.choices, 
         default=Genders.NOT_PROVIDED
     )
+    is_author = models.BooleanField(default=False)
 
     # required fields
     date_joined = models.DateTimeField(auto_now_add=True)
@@ -78,3 +79,6 @@ class User(AbstractBaseUser):
     
     def has_module_perms(self, app_label):
         return True
+    
+    def is_author(self) -> bool:
+        return self.is_author
