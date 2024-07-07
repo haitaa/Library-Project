@@ -22,4 +22,5 @@ urlpatterns = [
     path("api/user/", include("user.urls")),
     path("api/book/", include("book.urls")),
     path("api/author/", include("author.urls")),
+    path("api/category/", include("category.urls")),
 ]

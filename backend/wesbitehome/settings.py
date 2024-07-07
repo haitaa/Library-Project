@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'book',
     'author',
     'api',
+    'category',
 ]
 
 

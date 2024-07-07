@@ -1,11 +1,12 @@
 from rest_framework import serializers
 
 from .models import Book
-from api.serializers import AuthorPublicSerializer
+from api.serializers import AuthorPublicSerializer, CategoryPublicSerializer
 
 
 class BookSerializer(serializers.ModelSerializer):
     author = AuthorPublicSerializer(read_only=True)
+    category = CategoryPublicSerializer(read_only=True)
     class Meta:
         model = Book
         fields = [
@@ -13,6 +14,7 @@ class BookSerializer(serializers.ModelSerializer):
             "title",
             "author",
             "content",
+            "category",
             "pages",
             "price",
         ]
