@@ -11,7 +11,7 @@ class BookListCreateAPIView(generics.ListCreateAPIView):
         author = self.request.user
         title = serializer.validated_data.get('title')
         content = serializer.validated_data.get('content') or None
-        pages = serializer.validated_data.get('price')
+        pages = serializer.validated_data.get('pages')
         if serializer.is_valid(raise_exception=True):
             if content is None:
                 content = title
