@@ -2,6 +2,7 @@ from django.db import models
 
 from author.models import Author
 from category.models import Category
+from shelves.models import Shelves
 
 
 class Book(models.Model):
@@ -10,6 +11,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, default=None, related_name="books", on_delete=models.CASCADE)
     pages = models.IntegerField()
     category = models.ForeignKey(Category, default=None, related_name="categories", on_delete=models.CASCADE)
+    shelf = models.ForeignKey(Shelves, default=None, related_name="shelves", on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
 
 

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'author',
     'api',
     'category',
+    'shelves',
 ]
 
 

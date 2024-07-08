@@ -4,6 +4,7 @@ from user.models import User
 from author.models import Author
 from category.models import Category
 from book.models import Book
+from shelves.models import Shelves
 
 class UserPublicSerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,8 +23,18 @@ class CategoryPublicSerializer(serializers.ModelSerializer):
         model = Category
         fields = ["name", "description"]
 
+class ShelvesPublicSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Shelves
+        fields = [
+            "id",
+            "name",
+            "category_id",
+        ]
+
 class BookPublicSerializer(serializers.ModelSerializer):
     author = AuthorPublicSerializer(read_only=True)
+    shelves = ShelvesPublicSerializer(many=True, read_only=True)
     class Meta:
         model = Book
         fields = [
@@ -34,4 +45,6 @@ class BookPublicSerializer(serializers.ModelSerializer):
             "category",
             "pages",
             "price",
+            "shelves",
         ]
+
