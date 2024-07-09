@@ -1,10 +1,18 @@
 from rest_framework import generics
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from .models import User
 from .serializers import UserSerializer
 
 
-class UserListCreateAPIView(generics.ListCreateAPIView):
+class UserCreateAPIView(generics.CreateAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
+user_create_view = UserCreateAPIView.as_view()
+
+class UserListAPIView(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     def perform_create(self, serializer):
@@ -13,7 +21,7 @@ class UserListCreateAPIView(generics.ListCreateAPIView):
         surname = serializer.validated_data.get('surname')
         serializer.save()
 
-user_list_create_view = UserListCreateAPIView.as_view()
+user_list_view = UserListAPIView.as_view()
 
 
 class UserDetailAPIView(generics.RetrieveAPIView):

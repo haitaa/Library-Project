@@ -1,5 +1,0 @@
-django
-djangorestframework
-pyyaml
-requests
-

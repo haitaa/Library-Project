@@ -6,6 +6,8 @@ from category.models import Category
 from book.models import Book
 from shelves.models import Shelves
 
+
+
 class UserPublicSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
