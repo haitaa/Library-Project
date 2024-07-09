@@ -5,9 +5,10 @@ from .models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    tcNo = serializers.CharField(validators=[unique_user_tcNo], read_only=True)
+    tcNo = serializers.CharField(validators=[unique_user_tcNo])
     username = serializers.CharField(validators=[unique_user_username])
     email = serializers.CharField(validators=[unique_user_email])
+    gender = serializers.CharField(read_only=True)
 
     class Meta:
         model = User

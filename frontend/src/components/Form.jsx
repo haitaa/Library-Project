@@ -2,11 +2,17 @@ import { useState } from "react";
 import api from "../api";
 import { useNavigate } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constans";
+import "../styles/Form.css";
 
 function Form({ route, method }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [username, setUsername] = useState("");
+    const [first_name, setFirstName] = useState("");
+    const [last_name, setLastName] = useState("");
+    const [age, setAge] = useState("");
+    const [tcNo, setTcNo] = useState("");
     const navigate = useNavigate();
 
     const name = method === "login" ? "Login" : "Register";
@@ -16,21 +22,23 @@ function Form({ route, method }) {
         e.preventDefault();
 
         try {
-            if ((method = "login")) {
-                const res = await api.post(route, { email, password });
-                localStorage.setItem(ACCESS_TOKEN, res.data.access);
-                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
-                navigate("/");
-            } else {
+            if (method === "register") {
                 const res = await api.post(route, {
                     email,
                     password,
+                    tcNo,
                     username,
-                    firstName,
-                    lastName,
+                    first_name,
+                    last_name,
                     age,
                 });
                 navigate("/login");
+            } else if (method === "login") {
+                const res = await api.post(route, { email, password });
+                console.log(res);
+                localStorage.setItem(ACCESS_TOKEN, res.data.access);
+                localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
+                navigate("/");
             }
         } catch (error) {
             alert(error);
@@ -40,12 +48,15 @@ function Form({ route, method }) {
     };
 
     const renderRegisterContent = () => {
-        const [username, setUsername] = useState("");
-        const [firstName, setFirstName] = useState("");
-        const [lastName, setLastName] = useState("");
-        const [age, setAge] = useState("");
         return (
             <>
+                <input
+                    className="form-input"
+                    type="text"
+                    value={tcNo}
+                    onChange={(e) => setTcNo(e.target.value)}
+                    placeholder="TC No"
+                />
                 <input
                     className="form-input"
                     type="text"
@@ -56,14 +67,14 @@ function Form({ route, method }) {
                 <input
                     className="form-input"
                     type="text"
-                    value={firstName}
+                    value={first_name}
                     onChange={(e) => setFirstName(e.target.value)}
                     placeholder="First Name"
                 />
                 <input
                     className="form-input"
                     type="text"
-                    value={lastName}
+                    value={last_name}
                     onChange={(e) => setLastName(e.target.value)}
                     placeholder="Last Name"
                 />
@@ -88,7 +99,7 @@ function Form({ route, method }) {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email"
             />
-            {name === "Register" && renderRegisterContent}
+            {name === "Register" && renderRegisterContent()}
             <input
                 className="form-input"
                 type="password"
@@ -102,3 +113,5 @@ function Form({ route, method }) {
         </form>
     );
 }
+
+export default Form;
