@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
+import Books from "./components/Book";
 
 function Logout() {
     localStorage.clear();
@@ -37,6 +38,7 @@ function App() {
                             </ProtectedRoute>
                         }
                     />
+                    <Route path="/books" Component={Books} />
                     <Route path="/about" Component={About} />
                     <Route path="/login" element={<Login />} />
                     <Route path="/logout" element={<Logout />} />
