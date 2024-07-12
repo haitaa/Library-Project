@@ -1,4 +1,5 @@
 from rest_framework import generics, serializers
+from rest_framework.permissions import AllowAny
 
 from .models import Book
 from .serializers import BookSerializer
@@ -6,6 +7,7 @@ from .serializers import BookSerializer
 class BookListCreateAPIView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    permission_classes = [AllowAny]
 
     def perform_create(self, serializer):
         author = self.request.user

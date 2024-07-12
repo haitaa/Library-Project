@@ -35,7 +35,6 @@ function Form({ route, method }) {
                 navigate("/login");
             } else if (method === "login") {
                 const res = await api.post(route, { email, password });
-                console.log(res);
                 localStorage.setItem(ACCESS_TOKEN, res.data.access);
                 localStorage.setItem(REFRESH_TOKEN, res.data.refresh);
                 navigate("/");
