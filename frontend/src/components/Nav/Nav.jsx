@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link, NavLink } from "react-router-dom";
 
@@ -11,6 +11,30 @@ import { GrClose } from "react-icons/gr";
 
 export default function Nav() {
     const [isNavLinksShowing, setIsNavLinksShowing] = useState(false);
+
+    // Window Scroll Nav-Links Effects
+    useEffect(() => {
+        const handleScroll = () => {
+            const navElement = document.querySelector("nav");
+            const navLinksElement = document.querySelector(".nav-links");
+
+            if (navElement) {
+                navElement.classList.toggle("navShadow", window.scrollY > 0);
+            }
+
+            if (window.innerWidth < 1024 && navLinksElement) {
+                navLinksElement.classList.add("navLinksHide");
+                setIsNavLinksShowing(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+
+        // Clean up the event listener on component unmount
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
         <div>
