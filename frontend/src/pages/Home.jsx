@@ -6,6 +6,7 @@ import FeaturesBooks from "../components/FeaturesBooks/FeaturesBooks";
 import BestSellingBook from "../components/BestSellingBook/BestSellingBook";
 import PopularBooks from "../components/PopularBooks/PopularBooks";
 import Quote from "../components/Quote/Quote";
+import LatestArticle from "../components/LatestArticle/LatestArticle";
 
 export default function Home() {
     return (
@@ -16,6 +17,7 @@ export default function Home() {
             <BestSellingBook />
             <PopularBooks />
             <Quote />
+            <LatestArticle />
         </>
     );
 }
