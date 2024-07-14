@@ -5,6 +5,7 @@ import Brands from "../components/Brands/Brands";
 import FeaturesBooks from "../components/FeaturesBooks/FeaturesBooks";
 import BestSellingBook from "../components/BestSellingBook/BestSellingBook";
 import PopularBooks from "../components/PopularBooks/PopularBooks";
+import Quote from "../components/Quote/Quote";
 
 export default function Home() {
     return (
@@ -14,6 +15,7 @@ export default function Home() {
             <FeaturesBooks />
             <BestSellingBook />
             <PopularBooks />
+            <Quote />
         </>
     );
 }

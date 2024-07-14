@@ -1,0 +1,20 @@
+.Quote {
+    background: var(--color-bg-2);
+}
+.quote-title {
+    text-align: center;
+}
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    align-items: center;
+    text-align: center;
+}
+.quote-container article p {
+    font-size: 24px;
+    width: 60%;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
