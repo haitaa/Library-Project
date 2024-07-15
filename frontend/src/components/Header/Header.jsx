@@ -31,9 +31,9 @@ export default function Header() {
                         nextEl: ".button-next-slide",
                     }}
                 >
-                    {books.map(({ title, content, book_image, btnLink }) => {
+                    {books.map(({ id, title, content, book_image }) => {
                         return (
-                            <SwiperSlide key={books.id}>
+                            <SwiperSlide key={id}>
                                 <div className="header-wrapper container">
                                     <div className="header-left">
                                         <h1>{title}</h1>
@@ -44,7 +44,7 @@ export default function Header() {
                                         ></p>
                                         <Link
                                             className="btn btn-border"
-                                            to={btnLink}
+                                            to={`/book/${id}`}
                                         >
                                             Learn more
                                         </Link>

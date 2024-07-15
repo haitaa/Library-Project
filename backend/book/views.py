@@ -26,6 +26,8 @@ class BookDetailAPIView(generics.RetrieveAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = "id"
+    permission_classes = [AllowAny]
+
     
 book_detail_view = BookDetailAPIView.as_view()
 
@@ -34,6 +36,8 @@ class BookUpdateAPIView(generics.UpdateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = "id"
+    permission_classes = [AllowAny]
+
 
     def perform_update(self, serializer):
         instance = serializer.save()
@@ -47,6 +51,8 @@ class BookDestroyAPIView(generics.DestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
     lookup_field = "id"
+    permission_classes = [AllowAny]
+
 
     def perform_destroy(self, instance):
         super().perform_destroy(instance)

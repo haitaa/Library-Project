@@ -28,4 +28,4 @@ urlpatterns = [
     path("api/category/", include("category.urls")),
     path("api/shelf/", include("shelves.urls")),
     path("api/", include("api.urls")),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]

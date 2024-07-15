@@ -9,6 +9,7 @@ import Books from "../components/Book";
 import ProtectedRoute from "../components/ProtectedRoute";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
+import BookDetail from "../components/BookDetail/BookDetail";
 
 function Logout() {
     localStorage.clear();
@@ -38,6 +39,7 @@ export default function Router() {
                 <Route path="/register" element={<Register />} />
                 <Route path="*" element={<NotFound />} />
                 <Route path="/books" element={<Books />} />
+                <Route path="/book/:id" element={<BookDetail />} />
             </Routes>
             <Footer />
         </BrowserRouter>

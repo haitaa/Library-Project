@@ -1,0 +1,64 @@
+/* components/BookDetail/BookDetail.css */
+
+.book-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-detail-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .book-detail-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .book-detail-content {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .book-detail-image {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .book-detail-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-detail-info {
+    flex: 2;
+  }
+  
+  .book-detail-info p {
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .book-detail-info p strong {
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .book-detail-content {
+      flex-direction: column;
+    }
+    
+    .book-detail-image {
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+  }
+  
