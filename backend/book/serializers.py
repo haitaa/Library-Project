@@ -22,4 +22,5 @@ class BookSerializer(serializers.ModelSerializer):
             "pages",
             "price",
             "shelf",
+            "book_image",
         ]

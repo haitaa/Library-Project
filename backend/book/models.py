@@ -13,10 +13,10 @@ class Book(models.Model):
     category = models.ForeignKey(Category, default=None, related_name="categories", on_delete=models.CASCADE)
     shelf = models.ForeignKey(Shelves, default=None, related_name="shelves", on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10)
+    book_image = models.ImageField(null=True, blank=True, upload_to="images/")
 
 
     def __str__(self):
         return self.title
-
 
 

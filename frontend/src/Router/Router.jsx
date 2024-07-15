@@ -4,6 +4,7 @@ import Register from "../pages/Register";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Login from "../pages/Login";
+import Books from "../components/Book";
 
 import ProtectedRoute from "../components/ProtectedRoute";
 import Nav from "../components/Nav/Nav";
@@ -36,6 +37,7 @@ export default function Router() {
                 <Route path="/logout" element={<Logout />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="*" element={<NotFound />} />
+                <Route path="/books" element={<Books />} />
             </Routes>
             <Footer />
         </BrowserRouter>
