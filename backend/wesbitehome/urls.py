@@ -22,10 +22,14 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("__debug__/", include("debug_toolbar.urls")),
     path("api/user/", include("user.urls")),
-    path("api/book/", include("book.urls")),
+    # path("api/book/", include("book.urls")),
     path("api/author/", include("author.urls")),
     path("api/category/", include("category.urls")),
     path("api/shelf/", include("shelves.urls")),
     path("api/", include("api.urls")),
-]
+] 
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./FeaturesBooks.css";
 import TitleTypeOne from "../../UI/TitleTypeOne/TitleTypeOne";
 import { featuredBooksData } from "../../Data/Data";
+import fetchDataFromBackend from "../../Data/BookData";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
@@ -14,6 +15,8 @@ import "swiper/css/pagination";
 import { BsArrowReturnRight } from "react-icons/bs";
 
 export default function FeaturesBooks() {
+    const books = fetchDataFromBackend();
+
     return (
         <section className="Featured">
             <div className="container features-book-container">
@@ -29,26 +32,26 @@ export default function FeaturesBooks() {
                     modules={{ Pagination }}
                     pagination={{ el: ".swiper-pagination", clickable: true }}
                 >
-                    {featuredBooksData.map(
-                        (
-                            { img, imgLlink, name, nameLink, writer, price },
-                            index
-                        ) => {
+                    {books.map(
+                        ({ id, title, author, book_image, price }, index) => {
                             return (
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={id}>
                                     <div className="featurebook-box">
                                         <Link
-                                            to={imgLlink}
+                                            to={`/book/${id}`}
                                             className="featurebook"
                                         >
-                                            <img src={img} alt="" />
+                                            <img src={book_image} alt="" />
                                         </Link>
                                         <div className="featurebook-info">
-                                            <Link to={nameLink}>
-                                                <h4>{name}</h4>
+                                            <Link to={`/book/${id}`}>
+                                                <h4>{title}</h4>
                                             </Link>
                                             <div>
-                                                <small>{writer}</small>
+                                                <small>
+                                                    {author.user.first_name}{" "}
+                                                    {author.user.last_name}
+                                                </small>
                                             </div>
                                             <h5>
                                                 <span>{price}</span>
